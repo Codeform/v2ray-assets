@@ -8,15 +8,12 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  }: let
-    pkgs = nixpkgs.legacyPackages."x86_64-linux";
+  outputs = {nixpkgs, ...}: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
     inherit (pkgs) fetchurl lib;
   in {
-    defaultPackage = pkgs.stdenv.mkDerivation rec {
+    packages.${system}.default = pkgs.stdenv.mkDerivation rec {
       name = "v2ray-assets";
       version = "202312282208";
       srcs = let
