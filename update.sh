@@ -26,9 +26,9 @@ if [ $((upload_timestamp-old_timestamp)) -gt $((7*24*60*60)) ]; then
   geosite_hash_url=$(jaq '.assets | map(select(.name == "geosite.dat.sha256sum")) | .[0].browser_download_url' <<< "$json")
 
   geoip_hash=$(curl -Ls ${geoip_hash_url:1:-1} | cut -f 1 -d ' ')
-  geoip_hash=$(nix hash to-sri --type sha256 $geoip_hash)
+  geoip_hash=$(nix hash convert --hash-algo sha256 --to sri $geoip_hash)
   geosite_hash=$(curl -Ls ${geosite_hash_url:1:-1} | cut -f 1 -d ' ')
-  geosite_hash=$(nix hash to-sri --type sha256 $geosite_hash)
+  geosite_hash=$(nix hash convert --hash-algo sha256 --to sri $geosite_hash)
   sed -i "s/version = \"[^\"]*\"/version = \"${version:1:-1}\"/" flake.nix
   sed -i "s|geositeHash = \"[^\"]*\"|geositeHash= \"$geosite_hash\"|" flake.nix
   sed -i "s|geoipHash = \"[^\"]*\"|geoipHash = \"$geoip_hash\"|" flake.nix
