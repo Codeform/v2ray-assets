@@ -15,12 +15,12 @@
   in {
     packages.${system}.default = pkgs.stdenv.mkDerivation rec {
       name = "v2ray-assets";
-      version = "202509082213";
+      version = "202509142211";
       srcs = let
         geositeRev = version;
-        geositeHash = "sha256-TBmAHYGqRLV+LLJqjrXXGJOJPptizdGFNcoHKc4XHGE=";
+        geositeHash = "sha256-87bR5rtajZyNPt9hRwj7IiYgogCS7WFaQyuyDb7vCJs=";
         geoipRev = version;
-        geoipHash = "sha256-p32GWcvKLlAPfCGmn891n5fIFb6+TgT1ma+BPNi3iEY=";
+        geoipHash = "sha256-rWiZ85mgCNEOXSdZxCo4Xzfu/AkcbrY7ZXZty+6bt+4=";
       in [
         (fetchurl {
           url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${geoipRev}/geoip.dat";
