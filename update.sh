@@ -1,4 +1,4 @@
-#!/usr/bin/env -S nix shell nixpkgs#jaq nixpkgs#alejandra --command bash
+#!/usr/bin/env -S nix shell nixpkgs#jaq nixpkgs#nixfmt --command bash
 
 # json=$(cat example.json)
 json=$(curl -Ls https://api.github.com/repos/Loyalsoldier/v2ray-rules-dat/releases/latest)
@@ -33,7 +33,7 @@ if [ $((upload_timestamp-old_timestamp)) -gt $((7*24*60*60)) ]; then
   sed -i "s|geositeHash = \"[^\"]*\"|geositeHash= \"$geosite_hash\"|" flake.nix
   sed -i "s|geoipHash = \"[^\"]*\"|geoipHash = \"$geoip_hash\"|" flake.nix
 
-  alejandra flake.nix &>/dev/null
+  nixfmt flake.nix &>/dev/null
 
   nix flake update
 
