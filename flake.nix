@@ -18,13 +18,13 @@
     {
       packages.${system}.default = pkgs.stdenv.mkDerivation rec {
         name = "v2ray-assets";
-        version = "202602072219";
+        version = "202602202219";
         srcs =
           let
             geositeRev = version;
-            geositeHash = "sha256-EZeJgHJCY08HnQwL36+Fkkpf2Tnb6Bl6/hG6er40uGE=";
+            geositeHash = "sha256-Gs2Q3elZJ9RaDak9hEdQ2emEdi8FbRlxvWVbfm/NvRk=";
             geoipRev = version;
-            geoipHash = "sha256-jPPax9meQoo4C9OqEzD1dxinlNRf5PndIAd8AQ3AvNs=";
+            geoipHash = "sha256-pdWXkgQ2cuSLELtWfKYLYrZngmZmqaEiZS8b+qVWj6w=";
           in
           [
             (fetchurl {
